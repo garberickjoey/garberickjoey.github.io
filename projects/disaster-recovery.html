@@ -20,11 +20,11 @@
         <div class="skill-grid" style="margin-top:45px">
             <div class="skill-card">
                 <h3>RPO</h3>
-                <p>Define how much data the business can afford to lose and align backup frequency accordingly.</p>
+                <p>The Recovery Point Objective is the maximum amount of data a business can afford to lose during a disaster</p>
             </div>
             <div class="skill-card">
                 <h3>RTO</h3>
-                <p>Define how quickly critical systems need to return to service and prioritize recovery accordingly.
+                <p>The Recovery Time Objective is the maximum amount of time a system, application, or business process can remain offline after a disaster.
                 </p>
             </div>
             <div class="skill-card">
@@ -33,11 +33,32 @@
             </div>
         </div>
         <div class="card" style="margin-top:18px">
-            <h3>Recovery priorities</h3>
-            <p>1. Identity/DNS dependencies → 2. Critical business applications → 3. File services → 4. User
-                workstations and lower-priority services.</p>
-            <p>Document dependencies, recovery procedures, responsible personnel, and validation steps before an
-                incident occurs.</p>
+            <p>Understand that every business is different and a disaster recovery plan is going to look a little different for everybody. The framework below draws from ISO 22301.
+            </p>
+            <h3>Prerequisites</h3>
+            <ol>
+                <li>Establish a clear purpose and objectives</li>
+                <li>Determine Scope (Assets to be protected)</li>
+                <li>Establish Roles and Responsibilites of team members</li>
+                <li>Establish Compliance requirements</li>
+                <li>Note critical services and divide into priority groups</li>
+                <li>Establish RTO and RPO for priority groups</li>
+                <li>Define Disaster criteria</li>
+            </ol>
+            <h3>Plan Development</h3>
+            <ol>
+                <li>For each Disaster criteria in each priority group, outline a basic runbook via a tabletop simulation with stakeholders, from detection to returning to normal operation, noting any possible pain points while doing so.</li>
+                <li>Take your pain points, and attempt to add compensation. For example, if while performing a tabletop exercise you discover that a if critical business server running on prem is non-recoverable 
+                    and replacement will be outside of the RTO, it may be prudent to be able to deploy the backup image in a cloud environment until the on prem server can be repaired or replaced.
+                </li>
+                <li>After compensation, repeat tabletopping and refining until satisfied with the team performance and runbook procedure.</li>
+            </ol>
+            <h3>Implementation</h3>
+            <ol>
+                <li>Ensure that the team established in the Prerequisites is familiar with the runbooks by running routine simulations and tabletopping.</li>
+                <li>Establish a periodic audit schedule for established processes.</li>
+                <li>Document and review every incident to further refine your processes.</li>
+            </ol>
         </div>
     </main>
     <footer>

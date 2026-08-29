@@ -557,3 +557,20 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+ol {
+    margin: 20px 0;
+    padding-left: 30px;
+    color: var(--muted);
+}
+
+ol li {
+    margin-bottom: 12px;
+    padding-left: 8px;
+}
+
+ol li::marker {
+    color: var(--accent);
+    font-family: "DM Mono", monospace;
+    font-weight: 500;
+}

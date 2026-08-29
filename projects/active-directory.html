@@ -20,25 +20,56 @@
     <div class="project-grid" style="margin-top:45px">
       <div class="card">
         <h3>Environment</h3>
-        <p>DC01 provides Active Directory Domain Services, DNS, and DHCP. Additional Windows systems represent file
-          services and domain-joined workstations.</p>
+        <p>Setup: Windows Server VM and Windows 11 VM in Proxmox</p>
+        <h5>Server Configuration:</h5>
+        <ol>
+          <li>Configured Static IP: 192.168.123.5</li>
+          <li>Installed AD DS role</li>
+          <li>Promoted to DC, added new forest:  democorp.local</li>
+          <li>Installed DHCP Server role and created scope 192.168.123.100-199</li>
+        </ol>
+        <h5>Client Configuration:</h5>
+        <ol>
+          <li>Joined client to domain</li>
+        </ol>
         <div class="chips"><span>Windows Server</span><span>AD DS</span><span>DNS</span><span>DHCP</span></div>
       </div>
       <div class="card">
         <h3>Administration</h3>
-        <p>Document users, groups, OUs, security policies, Group Policy, workstation joins, permissions, and routine
-          PowerShell administration.</p>
+        <h5>Creating OUs, Users, and Groups</h5>
+        <ol>
+          <li>Created new OU DemoCorp-Objects</li>
+          <li>Created sub OUs Staff, Workstations, and Groups</li>
+          <li>Moved Client PC to Workstations and used redircmp in powershell to set default location for newly created computers to the Workstations OU</li>
+          <li>In the Groups OU, created HR-Department and IT-Admins security groups</li>
+          <li>Under Staff, created new user, firstname Joey, Last Name Garberick, logon name jgarb and set pwd</li>
+          <li>Added jgarb to IT-Admins group</li>
+        </ol>
+        <h5>Configuring GPOs & Security Policies</h5>
+        <ol>
+          <li>Created new GPO named Sec-Baseline</li>
+          <li>Configured minimum password length</li>
+          <li>Configured account lockout policy</li>
+          <li>Configured a Logon Notice: "Authorized Techs Only!"</li>
+          <li>Linked GPO, and performed a gpupdate /force on the client</li>
+        </ol>
+        <h5>File Shares</h5>
+        <ol>
+          <li>Created and shared a new folder named "TechDocs"</li>
+          <li>In share permissions, removed Everyone and added Authenticated Users with Change and Read permissions</li>
+          <li>In the Security tab, removed the users group and added IT-Admins with Modify permissions</li>
+        </ol>
         <div class="chips"><span>GPO</span><span>PowerShell</span><span>Security Groups</span></div>
       </div>
     </div>
     <div class="card" style="margin-top:18px">
-      <h3>Example PowerShell</h3>
-      <div class="terminal">
-        <pre><code>Get-ADUser -Filter * |
-  Select-Object Name, SamAccountName, Enabled |
-  Export-Csv "ADUsers.csv" -NoTypeInformation</code></pre>
-      </div>
-      <p>This creates a basic user inventory that can support account auditing and administrative reporting.</p>
+      <h3>Closing Tasks</h3>
+      <ol>
+        <li>Practiced some basic PS commands for creating groups and users, and adding members to groups</li>
+        <li>Practiced commands to search and unlock accounts</li>
+        <li>Signed onto Client machine with jgarb</li>
+        <li>Mapped shared drive</li>
+      </ol>
     </div>
   </main>
   <footer>
