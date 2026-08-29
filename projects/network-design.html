@@ -1,17 +1,104 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small Business Network Design | Joey Garberick</title><link rel="stylesheet" href="../style.css"></head><body><header class="site-header"><nav class="nav container"><a class="brand" href="../index.html">JG<span>.</span></a><a href="../index.html#projects">← Back to projects</a></nav></header><main class="section container"><p class="eyebrow">PROJECT 01 / NETWORKING</p><h1>Small Business Network Design</h1><p class="lead">A reference architecture for a 50-user manufacturing environment, designed around segmentation, reliability, security, and maintainability.</p><div class="card" style="margin-top:45px"><h3>Design goals</h3><p>Separate user, server, voice, management, and guest traffic while maintaining controlled communication between required resources.</p><div class="terminal" style="margin-top:25px"><pre><code>                         INTERNET
-                             |
-                         FIREWALL
-                             |
-                        802.1Q TRUNK
-                             |
-                          SWITCH
-              +--------------+--------------+
-              |              |              |
-           VLAN 10        VLAN 20        VLAN 30
-           USERS          SERVERS         VOICE
-              |              |              |
-        Workstations      DC / DNS       Phones
-                         File Server
+<!DOCTYPE html>
+<html lang="en">
 
-                    VLAN 40 MANAGEMENT
-                    VLAN 50 GUEST</code></pre></div><h3 style="margin-top:35px">Example VLAN plan</h3><table style="width:100%;border-collapse:collapse;color:#b9c6d4"><tr><th align="left">VLAN</th><th align="left">Purpose</th><th align="left">Example subnet</th></tr><tr><td>10</td><td>Users</td><td>10.10.10.0/24</td></tr><tr><td>20</td><td>Servers</td><td>10.10.20.0/24</td></tr><tr><td>30</td><td>Voice</td><td>10.10.30.0/24</td></tr><tr><td>40</td><td>Management</td><td>10.10.40.0/24</td></tr><tr><td>50</td><td>Guest</td><td>10.10.50.0/24</td></tr></table></div></main><footer><div class="container footer-inner"><span>© 2026 Joey Garberick</span><a href="../index.html">Home</a></div></footer></body></html>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width,initial-scale=1">
+   <title>Small Business Network Design | Joey Garberick</title>
+   <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+   <header class="site-header">
+      <nav class="nav container"><a class="brand" href="../index.html">JG<span>.</span></a><a
+            href="../index.html#projects">← Back to projects</a></nav>
+   </header>
+   <main class="section container">
+      <p class="eyebrow">PROJECT 01 / NETWORKING</p>
+      <h1>Industrial Environment Network</h1>
+      <p class="lead">An architecture for a ~30 user manufacturing and distribution environment, designed around segmentation,
+         reliability, security, and maintainability.</p>
+      <div class="card" style="margin-top:45px">
+         <h3>Design goals</h3>
+         <p>Create a resiliant network supporting users with primarily wireless devices that are mobile across
+            the entirity of the factory.
+         </p>
+         <h3>Implementation</h3>
+         <p>To effectivly address the client's needs, the following architecture was chosen. A dual-WAN setup was chosen to account for ISP outages. Two HA VRRP security gateways gives allows for routing and ngfw redundancy as well. 
+            Two core switches comprise the core layer, which feeds 3 access switches via aggregated links, chosen primarily for redundancy over the bandwidth benefit. One consideration was that this did leave each individual access layer switch as a single 
+            point of failure. To compensate, a cold spare was made available. The access switches supported a deployment of access points across the building along with cameras, phones, and a small number of other devices requiring a wired connection. IP schemes were chosen
+            to allow for segmentation of the network, utilizing the zone-based firewall features of the security gateways.
+         </p>
+         <div class="network-diagram">
+            <img src="../assets/networkdiagram.png" alt="Network Diagram">
+         </div>
+         <section class="section">
+            <p class="eyebrow">PHYSICAL INFRASTRUCTURE</p>
+            <h2>Network Infrastructure</h2>
+            <p class="section-intro">
+               Physical infrastructure of MDF and IDFs.
+            </p>
+
+            <div class="rack-grid">
+               <figure class="rack-photo">
+                     <img src="../assets/rack-01.png" alt="Network equipment rack">
+                     <figcaption>MDF</figcaption>
+               </figure>
+
+               <figure class="rack-photo">
+                     <img src="../assets/rack-02.png" alt="Network equipment rack">
+                     <figcaption>IDFs</figcaption>
+               </figure>
+            </div>
+         </section>
+         <h3 style="margin-top:35px">VLAN plan, altered from actual internal IPs at deployment</h3>
+         <table style="width:100%;border-collapse:collapse;color:#b9c6d4">
+            <tr>
+               <th align="left">VLAN</th>
+               <th align="left">Purpose</th>
+               <th align="left">Subnet</th>
+            </tr>
+            <tr>
+               <td>10</td>
+               <td>Management</td>
+               <td>10.0.10.0/24</td>
+            </tr>
+            <tr>
+               <td>12</td>
+               <td>Servers</td>
+               <td>10.0.12.0/24</td>
+            </tr>
+            <tr>
+               <td>20</td>
+               <td>Users</td>
+               <td>10.0.20.0/24</td>
+            </tr>
+            <tr>
+               <td>30</td>
+               <td>Voice</td>
+               <td>10.0.30.0/24</td>
+            </tr>
+            <tr>
+               <td>40</td>
+               <td>Cameras</td>
+               <td>10.0.40.0/24</td>
+            </tr>
+            <tr>
+               <td>50</td>
+               <td>Guest</td>
+               <td>10.0.50.0/24</td>
+            </tr>
+            <tr>
+               <td>60</td>
+               <td>Legacy</td>
+               <td>10.0.60.0/24</td>
+            </tr>
+         </table>
+      </div>
+   </main>
+   <footer>
+      <div class="container footer-inner"><span>© 2026 Joey Garberick</span><a href="../index.html">Home</a></div>
+   </footer>
+</body>
+
+</html>

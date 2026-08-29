@@ -1,1 +1,70 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Network Security | Joey Garberick</title><link rel="stylesheet" href="../style.css"></head><body><header class="site-header"><nav class="nav container"><a class="brand" href="../index.html">JG<span>.</span></a><a href="../index.html#projects">← Back to projects</a></nav></header><main class="section container"><p class="eyebrow">PROJECT 03 / SECURITY</p><h1>Network Segmentation & Firewall Policy</h1><p class="lead">A security-oriented network design using segmentation and least-privilege communication rules.</p><div class="card" style="margin-top:45px"><h3>Policy examples</h3><table style="width:100%;border-collapse:collapse;color:#b9c6d4"><tr><th align="left">Source</th><th align="left">Destination</th><th align="left">Policy</th></tr><tr><td>Users</td><td>Servers</td><td>Allow only required services</td></tr><tr><td>Users</td><td>Internet</td><td>Allow</td></tr><tr><td>Guest</td><td>Internal</td><td>Deny</td></tr><tr><td>Guest</td><td>Internet</td><td>Allow</td></tr><tr><td>Management</td><td>Network devices</td><td>Allow</td></tr><tr><td>Users</td><td>Management</td><td>Deny</td></tr></table><h3 style="margin-top:35px">Security principles</h3><p>Segmentation reduces unnecessary lateral movement. Firewall policy should be explicit, documented, reviewed periodically, and based on business requirements rather than broad “allow all” rules.</p></div></main><footer><div class="container footer-inner"><span>© 2026 Joey Garberick</span><a href="../index.html">Home</a></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Network Security | Joey Garberick</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav container"><a class="brand" href="../index.html">JG<span>.</span></a><a
+                href="../index.html#projects">← Back to projects</a></nav>
+    </header>
+    <main class="section container">
+        <p class="eyebrow">PROJECT 03 / SECURITY</p>
+        <h1>Network Segmentation & Firewall Policy</h1>
+        <p class="lead">A security-oriented network design using segmentation and least-privilege communication rules.
+        </p>
+        <div class="card" style="margin-top:45px">
+            <h3>Policy examples</h3>
+            <table style="width:100%;border-collapse:collapse;color:#b9c6d4">
+                <tr>
+                    <th align="left">Source</th>
+                    <th align="left">Destination</th>
+                    <th align="left">Policy</th>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>Servers</td>
+                    <td>Allow only required services</td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>Internet</td>
+                    <td>Allow</td>
+                </tr>
+                <tr>
+                    <td>Guest</td>
+                    <td>Internal</td>
+                    <td>Deny</td>
+                </tr>
+                <tr>
+                    <td>Guest</td>
+                    <td>Internet</td>
+                    <td>Allow</td>
+                </tr>
+                <tr>
+                    <td>Management</td>
+                    <td>Network devices</td>
+                    <td>Allow</td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>Management</td>
+                    <td>Deny</td>
+                </tr>
+            </table>
+            <h3 style="margin-top:35px">Security principles</h3>
+            <p>Segmentation reduces unnecessary lateral movement. Firewall policy should be explicit, documented,
+                reviewed periodically, and based on business requirements rather than broad “allow all” rules.</p>
+        </div>
+    </main>
+    <footer>
+        <div class="container footer-inner"><span>© 2026 Joey Garberick</span><a href="../index.html">Home</a></div>
+    </footer>
+</body>
+
+</html>
