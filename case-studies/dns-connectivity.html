@@ -15,9 +15,13 @@
     </header>
     <main class="section container">
         <p class="eyebrow">CASE STUDY / NETWORKING</p>
-        <h1>DNS & Connectivity Troubleshooting</h1>
+        <h1>Connectivity Troubleshooting</h1>
         <p class="lead">A repeatable troubleshooting method for connectivity problems.</p>
         <div class="card" style="margin-top:45px">
+            <h3>The Problem</h3>
+            <p>I have found that end-users often have difficulty describing connectivity issues. There are many variables in play and the only information that the user will give is "it's not working". This is the step by step framework that I apply 
+                when troubleshooting connectivity issues.
+            </p>
             <h3>Layered workflow</h3>
             <p><strong>1. Physical:</strong> link state, cabling, switch port, wireless association.</p>
             <p><strong>2. Local configuration:</strong> IP address, subnet mask, gateway, DNS servers.</p>
@@ -28,6 +32,14 @@
             <div class="chips">
                 <span>ipconfig</span><span>ping</span><span>tracert</span><span>nslookup</span><span>arp</span><span>PowerShell</span>
             </div>
+            <h3>Real Example</h3>
+            <p>An end user reported intermittent network connectivity issues. I began by verifying the user's workstations physical path to the gateway. I was able to verify the cable path to the access switch, and the cable path from the access switch to the 
+                gateway. When looking at the switch, I noticed the uplink port on the access switch was flapping. It was also worth noting that the port flapping was causing changing spanning tree topology. I was able to identify this as a potential cause of the 
+                intermittent issues. From there, I switched the uplink port on the switch and continued my workflow. I was able to confirm that the workstation was reaching the correct DHCP server, and recieving a correct IPv4 address. I confirmed the workstation 
+                was reaching the correct DNS server and the server was operating normally. From there, I was able to validate gateway reachablility and reviewed firewall rules for that zone to rule out the possiblility of routing issues. I was also able to confirm 
+                essential application function with the user. After monitoring, it appeared that changing the uplink port on the access switch fixed the issues the user was experiencing. A ticket was submitted for assesment and replacement of the access switch with 
+                the failing port. 
+            </p>
         </div>
     </main>
     <footer>

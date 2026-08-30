@@ -29,6 +29,17 @@
             <p>Good troubleshooting is controlled experimentation: establish a baseline, change one meaningful variable,
                 test, and document the result.</p>
         </div>
+        <div  class="card" style="margin-top: 45px;">
+            <h3>Example Scenario</h3>
+            <p>An end user reported extreme slowness while using Adobe Acrobat</p>
+            <h3>The Investigation</h3>
+            <p>Confirmed that after opening the application, the PC did begin to run slower than when using different applications. Looking at resource utilization, when Acrobat was open memory utilization jumped to almost max. 
+                When looking at the running processes, I noticed that Acrobat was creating an abnormal number of the same process during startup. Additionally, I discovered that Acrobat had recently updated, around the same time that the issue 
+                was  first reported.
+            </p>
+            <h3>The Fix</h3>
+            <p>Taking all of this into account, I used the application instasller to perform a repair, after which I was able to confirm that Acrobat's resource utilization was within an acceptable range.</p>
+        </div>
     </main>
     <footer>
         <div class="container footer-inner"><span>© 2026 Joey Garberick</span><a href="../index.html">Home</a></div>

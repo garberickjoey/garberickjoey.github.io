@@ -27,16 +27,6 @@
                     <th align="left">Policy</th>
                 </tr>
                 <tr>
-                    <td>Users</td>
-                    <td>Servers</td>
-                    <td>Allow only required services</td>
-                </tr>
-                <tr>
-                    <td>Users</td>
-                    <td>Internet</td>
-                    <td>Allow</td>
-                </tr>
-                <tr>
                     <td>Guest</td>
                     <td>Internal</td>
                     <td>Deny</td>
@@ -47,18 +37,25 @@
                     <td>Allow</td>
                 </tr>
                 <tr>
-                    <td>Management</td>
-                    <td>Network devices</td>
-                    <td>Allow</td>
+                    <td>Internet</td>
+                    <td>Internal</td>
+                    <td>Allow Return</td>
                 </tr>
                 <tr>
-                    <td>Users</td>
+                    <td>DMZ</td>
+                    <td>Internal</td>
+                    <td>Allow Return</td>
+                </tr>
+                <tr>
+                    <td>Internal</td>
                     <td>Management</td>
                     <td>Deny</td>
                 </tr>
             </table>
             <h3 style="margin-top:35px">Security principles</h3>
-            <p>Segmentation reduces unnecessary lateral movement. Firewall policy should be explicit, documented,
+            <p>Segmentation reduces unnecessary lateral movement. By grouping VLANs and interfaces into zones, you are gain granular control over traffic between the zones. Some basic examples of zones would be 
+                Internal, External, DMZ, VPN, and Guest. Internal can home a group of trusted internal networks, whereas External would contain non-trusted WAN/Internet networks. The DMZ (demillitarized zone) is a location to place 
+                Internet facing servers, such as a mail or web server. Guest would contain the untrusted internal networks, and VPN would contain remote VPN connections. Zone-Based Firewall policy should be explicit, documented,
                 reviewed periodically, and based on business requirements rather than broad “allow all” rules.</p>
         </div>
     </main>

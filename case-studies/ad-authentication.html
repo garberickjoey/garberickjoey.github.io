@@ -22,14 +22,21 @@
             <h3>Problem</h3>
             <p>A domain controller was reporting repeated failed computer logons from a workstation.</p>
             <h3>Investigation</h3>
-            <p>Reviewed Event ID 4625, identified the source system, checked DNS records, compared IP/MAC information,
-                reviewed the computer account in Active Directory, and tested the workstation's secure channel.</p>
+            <p>Reviewed Event ID 4625, identified the source system, compared IP/MAC information with asset-inventory, noting the workstation name had been changed just before the authentication failures began.
+                Reviewed the computer account in Active Directory, and tested the workstation's secure channel. Noted the workstations secure channel was broken.</p>
             <div class="chips"><span>Event
                     Viewer</span><span>PowerShell</span><span>ADUC</span><span>nslookup</span><span>ARP</span></div>
             <h3>Approach</h3>
             <p>Start with the evidence in the domain controller logs, verify the workstation's network identity, then
-                validate DNS and the machine trust relationship. Avoid changing the AD object until the underlying cause
-                is understood.</p>
+                validate DNS and the machine trust relationship.</p>
+            <h3>The Fix</h3>
+            <p>Attempted to remediate the issue using the PS command: </p>
+            <div class="terminal">
+                <pre><code>
+                    Test-ComputerSecureChannel -Repair -Credential domain\administrator
+                </code></pre>
+            </div>
+            <p>Confirmed that the secure channel had been repaired, and monitored for any more authentication failures from the target system</p>
             <h3>Lesson</h3>
             <p>Authentication problems can originate below the authentication layer. DNS, addressing, naming, machine
                 identity, and domain trust all need to agree.</p>
